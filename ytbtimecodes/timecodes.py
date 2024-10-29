@@ -24,23 +24,38 @@ def timedelta_from_seconds(seconds: str) -> str:
     return str(time_delta)  # Return the string representation of the timedelta
 
 
-def standardize_time_format(time_str):
-    """Standardizes various time formats."""
-    time_str = str(time_str)
-
-    # Standardize '0' hour and minute formats
-    if time_str in {'0:00', '00:00', '0:00:00', '00:00:00'}:
+def standardize_time_format(time_str: str) -> str:
+    _time = str(time_str)
+    if _time == '0:00':
         return '0:00'
 
-    # Remove unnecessary leading zeros
-    if time_str.startswith(('00:00:', '0:00:')):
-        return time_str.replace('00:00:', '0:').replace('0:00:', '0:')
+    if _time == '00:00':
+        return '0:00'
 
-    # Further refine format if leading zeros in seconds
-    if time_str.startswith(('00:00:0', '0:00:0')):
-        return time_str.replace('00:00:0', '0:0').replace('0:00:0', '0:0')
+    if _time == '0:00:00':
+        return '0:00'
 
-    return time_str
+    if _time == '00:00:00':
+        return '0:00'
+
+    if _time.startswith('00:00:0'):
+        return _time.replace('00:00:0', '0:0')
+
+    if _time.startswith('0:00:0'):
+        return _time.replace('0:00:0', '0:0')
+
+    if _time.startswith('00:00:'):
+        return _time.replace('00:00:', '0:')
+
+    if _time.startswith('0:00:'):
+        return _time.replace('0:00:', '0:')
+
+    _time = f'@@{_time}##'
+    _time = _time.replace('@@00:00:0', '@@0:0')
+    _time = _time.replace('@@0:0', '@@')
+    _time = _time.replace('@@0:', '@@')
+
+    return _time.replace('@@', '').replace('##', '')
 
 
 def clean_input_text(text):
