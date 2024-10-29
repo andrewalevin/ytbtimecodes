@@ -109,7 +109,14 @@ def extract_timecodes(text):
     return timecodes
 
 
-def filter_timecodes_within_bounds(timecodes, start_time, end_time):
+def filter_timecodes_within_bounds(timecodes: list, start_time: int, end_time: int) -> list:
     """Filters timecodes that fall within the specified start and end times."""
-    start_time, end_time = int(start_time), int(end_time)
-    return [timecode for timecode in timecodes if start_time <= int(timecode.get('time')) <= end_time]
+
+    grp = []
+    for timecode in timecodes:
+        _time_timecode = int(timecode.get('time'))
+        if start_time <= _time_timecode  <= end_time:
+            timecode['time'] = _time_timecode - start_time
+            grp.append(timecode)
+
+    return grp
