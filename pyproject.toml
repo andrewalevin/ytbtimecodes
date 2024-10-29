@@ -1,20 +1,18 @@
 [tool.poetry]
 name = "ytbtimecodes"
-version = "0.1"
+version = "0.8"
 description = "ytbtimecodes"
 authors = ["Andrew Levin <your.email@example.com>"]
 license = "MIT"
 homepage = "https://github.com/andrewalevin/ytbtimecodes"  # URL вашего проекта
+packages = [{include = "ytbtimecodes"}]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
 
-
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.0"
-
-[tool.poetry.scripts]
-fb22epubbot = "ytbtimecodes.main:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
