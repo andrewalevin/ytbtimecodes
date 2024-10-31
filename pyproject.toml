@@ -8,6 +8,7 @@ homepage = "https://github.com/andrewalevin/ytbtimecodes"  # URL вашего п
 packages = [{include = "ytbtimecodes"}]
 
 
+
 [tool.poetry.dependencies]
 python = "^3.8"
 
