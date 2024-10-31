@@ -91,20 +91,21 @@ def locate_timecodes_block(text):
 
 def extract_timecodes(text):
     """Extracts timecodes and their associated titles from the text."""
-    timecodes_block = clean_input_text(locate_timecodes_block(text))
-
     timecodes = []
-    for line in timecodes_block.split('\n'):
-        if not (matches := re.findall(TIMECODE_REGEX, line)):
-            continue
+    try:
+        timecodes_block = clean_input_text(locate_timecodes_block(text))
 
-        raw_timecode = matches[0]
-        title = line.replace(raw_timecode, '').strip(TRIM_CHARS).lstrip(PUNCTUATION_CHARS)
+        for line in timecodes_block.split('\n'):
+            if not (matches := re.findall(TIMECODE_REGEX, line)):
+                continue
 
-        timecodes.append({
-            'time': convert_time_to_seconds(raw_timecode),
-            'title': title,
-        })
+            raw_timecode = matches[0]
+            timecodes.append({
+                'time': convert_time_to_seconds(raw_timecode),
+                'title': line.replace(raw_timecode, '').strip(TRIM_CHARS).lstrip(PUNCTUATION_CHARS)})
+
+    except Exception as e:
+        return []
 
     return timecodes
 
