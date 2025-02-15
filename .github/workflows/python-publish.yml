@@ -38,7 +38,6 @@ jobs:
       run: python -m build
 
     - name: 🐍 💾 🚀 Python PyPI. Publish package
-      if: steps.create_release.outputs.upload_url != ''
       uses: pypa/gh-action-pypi-publish@v1.8.6
       with:
         user: __token__
