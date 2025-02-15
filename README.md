@@ -10,6 +10,7 @@ A Python library for extracting, cleaning, and standardizing timecodes within te
 - **Filtering**: Filters timecodes within specified time bounds.
 - **Text Cleaning**: Cleans unwanted patterns and trims whitespace.
 
+
 ## Installation
 
 ```bash
