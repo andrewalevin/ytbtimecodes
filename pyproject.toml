@@ -1,12 +1,13 @@
 
 [tool.poetry]
 name = "ytbtimecodes"
-version = "1.1.0"
+version = "1.2"
 description = "ytbtimecodes"
 authors = ["Andrew Levin <your.email@example.com>"]
 license = "MIT"
 homepage = "https://github.com/andrewalevin/ytbtimecodes"  # URL вашего проекта
 packages = [{include = "ytbtimecodes"}]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
