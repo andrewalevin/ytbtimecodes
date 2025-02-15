@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ytbtimecodes"
-version = "0.14"
+version = "1.1"
 description = "ytbtimecodes"
 authors = ["Andrew Levin <your.email@example.com>"]
 license = "MIT"
